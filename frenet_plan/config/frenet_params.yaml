@@ -1,0 +1,33 @@
+frenet_planner:
+  ros__parameters:
+    # 规划频率
+    planning_frequency: 40.0  # 规划频率 (Hz) - 建议20-50Hz，实际频率取决于计算能力
+    
+    # 速度和加速度限制 (园区限速3m/s)
+    max_speed: 3.0           # 最大速度 (m/s) - 园区限速
+    max_accel: 2.0           # 最大加速度 (m/s^2) - 低速舒适性
+    max_curvature: 0.5       # 最大曲率 (1/m) - 平滑转弯
+    
+    # 道路宽度 (园区道路左右各1.5m)
+    max_road_width_left: 1.5   # 左侧最大偏移 (m)
+    max_road_width_right: 1.5  # 右侧最大偏移 (m)
+    
+    # 采样参数 (密集采样以提高覆盖率)
+    d_road_sample: 0.2       # 横向采样间隔 (m) - 1.5m范围内约6个采样点
+    t_sample: 0.3            # 时间采样间隔 (s) - 密集时间采样
+    dt: 0.1                  # 轨迹点时间间隔 (s) - 更高频率
+    
+    # 目标速度 (略低于限速更安全)
+    target_speed: 2.5        # 目标速度 (m/s)
+    
+    # Costmap避障参数 (矩形车辆模型)
+    vehicle_length: 1.0      # 车辆长度 (m)
+    vehicle_width: 0.6       # 车辆宽度 (m)
+    costmap_obstacle_threshold: 50  # Costmap障碍物阈值 (0-100)，大于此值视为障碍
+    
+    # 代价权重 (低速场景调整)
+    k_jerk: 0.5              # Jerk代价权重 - 提高舒适性
+    k_time: 0.05             # 时间代价权重 - 降低时间优先级
+    k_diff: 1.5              # 横向代价权重系数 - 增加横向稳定性
+    k_lat: 2.0               # 横向偏差权重 - 更倾向于跟随参考线
+    k_lon: 1.0               # 纵向速度偏差权重
