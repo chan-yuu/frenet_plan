@@ -31,10 +31,10 @@
             <inertia  ixx="1.391" ixy="0.004"  ixz="0.0"  iyy="6.853"  iyz="0.0"  izz="6.125" />
         </inertial>
         <visual>
-            <origin xyz="0 0 0" rpy="0 0 0" />
+            <origin xyz="-0.1 0 -0.25" rpy="0 0 1.57" />
             <geometry>
                 <!-- <mesh filename="file://$(find niagara_model)/meshes/base_link.STL" /> -->
-                <mesh filename="file://$(find niagara_model)/meshes/prius/hybrid_body.obj" />
+                <mesh filename="file://$(find niagara_model)/meshes/prius/hybrid_body.obj" scale="0.0065 0.0065 0.0065" />
             </geometry>
             <!-- <material name="white">
                 <color rgba="0.1 0.1 0.1 1"/>
@@ -50,7 +50,7 @@
 
 
 
-    <link name="test_link">
+    <!-- <link name="test_link">
         <inertial>
             <mass value="1.0" />
             <origin xyz="0 0 0" />
@@ -62,19 +62,19 @@
                 <mesh filename="file://$(find niagara_model)/meshes/prius/hybrid_body.obj" />
             </geometry>
         </visual>
-        <!-- <collision>
+        <collision>
             <origin xyz="0 0 0" rpy="0 0 0 " />
             <geometry>
                 <mesh filename="file://$(find niagara_model)/meshes/prius/base_link.STL" />
             </geometry>
-        </collision>      -->
+        </collision>     
     </link>
 
     <joint name="base_link_joint_test" type="fixed">
       <origin xyz="0 0 0.0" rpy="0 0 0" /> 
       <parent link="base_link"/>
       <child link="test_link" />
-    </joint>
+    </joint> -->
 
     <xacro:VLP-16 parent="base_link" name="rslidar" topic="/rslidar_points" hz="10" samples="440" gpu="${gpu}"/>
 

@@ -75,6 +75,11 @@ install(DIRECTORY launch
   OPTIONAL
 )
 
+install(DIRECTORY rviz
+  DESTINATION share/${PROJECT_NAME}
+  OPTIONAL
+)
+
 # Install config files
 install(DIRECTORY config
   DESTINATION share/${PROJECT_NAME}
@@ -84,6 +89,7 @@ install(DIRECTORY config
 # Install scripts
 install(PROGRAMS
   scripts/test_publisher.py
+  scripts/test_control.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
