@@ -13,16 +13,16 @@ frenet_planner:
     max_road_width_right: 1.5  # 右侧最大偏移 (m)
     
     # 采样参数 (密集采样以提高覆盖率)
-    d_road_sample: 0.2       # 横向采样间隔 (m) - 1.5m范围内约6个采样点
+    d_road_sample: 0.4       # 横向采样间隔 (m) - 1.5m范围内约6个采样点
     t_sample: 0.3            # 时间采样间隔 (s) - 密集时间采样
-    dt: 0.1                  # 轨迹点时间间隔 (s) - 更高频率
+    dt: 0.2                  # 轨迹点时间间隔 (s) - 更高频率
     
     # 目标速度 (略低于限速更安全)
     target_speed: 2.5        # 目标速度 (m/s)
     
     # Costmap避障参数 (矩形车辆模型)
-    vehicle_length: 1.0      # 车辆长度 (m)
-    vehicle_width: 0.6       # 车辆宽度 (m)
+    vehicle_length: 2.5      # 车辆长度 (m)
+    vehicle_width: 1.5       # 车辆宽度 (m)
     costmap_obstacle_threshold: 50  # Costmap障碍物阈值 (0-100)，大于此值视为障碍
     
     # 代价权重 (低速场景调整)

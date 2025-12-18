@@ -39,10 +39,10 @@ class FrenetTestPublisher(Node):
         path_msg.header.frame_id = 'map'
         
         # 生成50米直线路径
-        for i in range(100):
+        for i in range(350):
             pose = PoseStamped()
             pose.header = path_msg.header
-            pose.pose.position.x = float(i) * 0.1
+            pose.pose.position.x = float(i) * 0.1 - 10.0  # 从-10m到40m
             pose.pose.position.y = 0.0
             pose.pose.position.z = 0.0
             pose.pose.orientation.w = 1.0
@@ -70,7 +70,7 @@ class FrenetTestPublisher(Node):
         odom_msg.twist.twist.linear.x = 1.8
         odom_msg.twist.twist.linear.y = 0.0
         
-        self.odom_pub.publish(odom_msg)
+        # self.odom_pub.publish(odom_msg)
         
         # 发布costmap
         self.costmap_msg.header.stamp = self.get_clock().now().to_msg()
@@ -82,14 +82,14 @@ class FrenetTestPublisher(Node):
         costmap.header.frame_id = 'map'
         
         # 地图参数：20m x 10m，分辨率0.1m
-        width = 200   # 20m / 0.1m
-        height = 100  # 10m / 0.1m
+        width = 400   # 20m / 0.1m
+        height = 200  # 10m / 0.1m
         resolution = 0.1
         
         costmap.info.resolution = resolution
         costmap.info.width = width
         costmap.info.height = height
-        costmap.info.origin.position.x = 0.0
+        costmap.info.origin.position.x = -15.0
         costmap.info.origin.position.y = -5.0  # 中心对齐
         costmap.info.origin.position.z = 0.0
         costmap.info.origin.orientation.w = 1.0
@@ -99,7 +99,7 @@ class FrenetTestPublisher(Node):
         
         # 添加一些测试障碍物
         # 障碍物1：在x=8m, y=0.5m处的静态障碍
-        obs1_x = int(8.0 / resolution)
+        obs1_x = int(12.0 / resolution)
         obs1_y = int((0.5 + 5.0) / resolution)
         for i in range(-5, 6):
             for j in range(-5, 6):
@@ -107,7 +107,7 @@ class FrenetTestPublisher(Node):
                     data[obs1_y + i, obs1_x + j] = 100
         
         # 障碍物2：在x=12m, y=-0.8m处的静态障碍
-        obs2_x = int(12.0 / resolution)
+        obs2_x = int(18.0 / resolution)
         obs2_y = int((-0.8 + 5.0) / resolution)
         for i in range(-5, 6):
             for j in range(-5, 6):
