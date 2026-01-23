@@ -5,6 +5,11 @@
 <img src="frenet_plan/docs/3.png" alt="" style="width:500px;height:auto;">
 
 
+
+https://github.com/user-attachments/assets/4ab4722c-9f90-4c94-9f36-1c37df5440e8
+
+
+
 # frenet_plan
 基于frenet坐标系的规划+环境env-ros2实现
 
